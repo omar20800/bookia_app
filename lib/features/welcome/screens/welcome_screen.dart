@@ -1,8 +1,8 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
 import 'package:bookia_app/core/appcolour.dart';
-import 'package:bookia_app/features/custom_button.dart';
-import 'package:bookia_app/features/login_screen.dart';
-import 'package:bookia_app/features/register_screen.dart';
+import 'package:bookia_app/features/widgets/custom_button.dart';
+import 'package:bookia_app/features/login/screens/login_screen.dart';
+import 'package:bookia_app/features/register/screens/register_screen.dart';
 import 'package:flutter/material.dart';
 
 class WelcomeScreen extends StatelessWidget {

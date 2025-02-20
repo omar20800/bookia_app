@@ -1,14 +1,14 @@
 // ignore_for_file: prefer_const_constructors
 
 import 'package:bookia_app/core/appcolour.dart';
-import 'package:bookia_app/features/back_button.dart';
-import 'package:bookia_app/features/custom_button.dart';
-import 'package:bookia_app/features/input_field.dart';
-import 'package:bookia_app/features/login_screen.dart';
-import 'package:bookia_app/features/login_with.dart';
-import 'package:bookia_app/features/password_field.dart';
-import 'package:bookia_app/features/register_login.dart';
-import 'package:bookia_app/features/welcome_text.dart';
+import 'package:bookia_app/features/widgets/back_button.dart';
+import 'package:bookia_app/features/widgets/custom_button.dart';
+import 'package:bookia_app/features/widgets/input_field.dart';
+import 'package:bookia_app/features/login/screens/login_screen.dart';
+import 'package:bookia_app/features/widgets/login_with.dart';
+import 'package:bookia_app/features/login/widgets/password_field.dart';
+import 'package:bookia_app/features/widgets/register_login.dart';
+import 'package:bookia_app/features/widgets/welcome_text.dart';
 import 'package:flutter/material.dart';
 
 class ForgotPassword extends StatelessWidget {
