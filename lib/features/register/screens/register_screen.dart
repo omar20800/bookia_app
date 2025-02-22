@@ -11,74 +11,89 @@ import 'package:bookia_app/core/widgets/welcome_text.dart';
 import 'package:flutter/material.dart';
 
 class RegisterScreen extends StatelessWidget {
-  const RegisterScreen({super.key});
+  RegisterScreen({super.key});
+  final _formKey = GlobalKey<FormState>();
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: CustomScrollView(slivers: [
-        SliverFillRemaining(
-          hasScrollBody: false,
-          child: Padding(
-            padding: EdgeInsets.only(top: 55, left: 24, right: 24, bottom: 24),
-            child:
-                Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-              BackButtonTile(onPressed: () {
-                Navigator.pop(context);
-              }),
-              SizedBox(height: 20),
-              WelcomeText(
-                text: 'Hello! Register to get started',
-              ),
-              SizedBox(height: 30),
-              InputField(
-                ispassword: false,
-                keyboardType: TextInputType.text,
-                hint: 'Username',
-              ),
-              SizedBox(height: 20),
-              InputField(
-                ispassword: false,
-                keyboardType: TextInputType.emailAddress,
-                hint: 'Email',
-              ),
-              SizedBox(height: 20),
-              InputField(
-                ispassword: true,
-                hint: 'Password',
-              ),
-              SizedBox(height: 20),
-              InputField(
-                ispassword: true,
-                hint: 'Confirm Password',
-              ),
-              SizedBox(
-                height: 20,
-              ),
-              CustomButton(
-                  text: 'Register',
-                  onpressed: () {},
-                  bcolor: AppColours.accentColor,
-                  tcolor: AppColours.primaryColor),
-              SizedBox(height: 20),
-              LoginWith(
-                text: 'Or Register with',
-              ),
-              Expanded(
-                child: SizedBox(),
-              ),
-              RegisterLogin(
-                onPressed: () {
-                  Navigator.pushReplacement(context,
-                      MaterialPageRoute(builder: (context) => LoginScreen()));
-                },
-                text: 'Already have an account?',
-                textButton: 'Login Now',
-              ),
-            ]),
-          ),
-        )
-      ]),
+      body: Form(
+        key: _formKey,
+        child: CustomScrollView(slivers: [
+          SliverFillRemaining(
+            hasScrollBody: false,
+            child: Padding(
+              padding:
+                  EdgeInsets.only(top: 55, left: 24, right: 24, bottom: 24),
+              child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    BackButtonTile(onPressed: () {
+                      Navigator.pop(context);
+                    }),
+                    SizedBox(height: 20),
+                    WelcomeText(
+                      text: 'Hello! Register to get started',
+                    ),
+                    SizedBox(height: 30),
+                    InputField(
+                      ispassword: false,
+                      keyboardType: TextInputType.text,
+                      hint: 'Username',
+                    ),
+                    SizedBox(height: 20),
+                    InputField(
+                      ispassword: false,
+                      keyboardType: TextInputType.emailAddress,
+                      hint: 'Email',
+                    ),
+                    SizedBox(height: 20),
+                    InputField(
+                      ispassword: true,
+                      hint: 'Password',
+                    ),
+                    SizedBox(height: 20),
+                    InputField(
+                      ispassword: true,
+                      hint: 'Confirm Password',
+                    ),
+                    SizedBox(
+                      height: 20,
+                    ),
+                    CustomButton(
+                        text: 'Register',
+                        onpressed: () {
+                          if (_formKey.currentState!.validate()) {
+                              ScaffoldMessenger.of(context).showSnackBar(
+                                  const SnackBar(
+                                      backgroundColor: Colors.green,
+                                      content: Text('Processing Data')));
+                          }
+                        },
+                        bcolor: AppColours.accentColor,
+                        tcolor: AppColours.primaryColor),
+                    SizedBox(height: 20),
+                    LoginWith(
+                      text: 'Or Register with',
+                    ),
+                    Expanded(
+                      child: SizedBox(),
+                    ),
+                    RegisterLogin(
+                      onPressed: () {
+                        Navigator.pushReplacement(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => LoginScreen()));
+                      },
+                      text: 'Already have an account?',
+                      textButton: 'Login Now',
+                    ),
+                  ]),
+            ),
+          )
+        ]),
+      ),
     );
   }
 }

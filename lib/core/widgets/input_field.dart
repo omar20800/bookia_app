@@ -22,7 +22,13 @@ class _InputFieldState extends State<InputField> {
 
   @override
   Widget build(BuildContext context) {
-    return TextField(
+    return TextFormField(
+      validator: (value) {
+        if (value!.isEmpty) {
+          return "This field is can't be empty";
+        }
+        return null;
+      },
       obscureText: widget.ispassword
           ? showPassword
               ? true
