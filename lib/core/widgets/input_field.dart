@@ -1,5 +1,6 @@
 // ignore_for_file: prefer_const_literals_to_create_immutables, prefer_const_constructors
 
+import 'package:bookia_app/core/validation/validation.dart';
 import 'package:flutter/material.dart';
 
 class InputField extends StatefulWidget {
@@ -24,10 +25,18 @@ class _InputFieldState extends State<InputField> {
   Widget build(BuildContext context) {
     return TextFormField(
       validator: (value) {
-        if (value!.isEmpty) {
-          return "This field is can't be empty";
+        if (widget.keyboardType == TextInputType.visiblePassword) {
+          return passwordValid(value);
+        } else if (widget.keyboardType == TextInputType.emailAddress) {
+          return emailValid(value);
+        } else if (widget.keyboardType == TextInputType.name) {
+          return usernameValid(value);
+        } else {
+          if (value!.isEmpty) {
+            return 'This field is required';
+          }
+          return null;
         }
-        return null;
       },
       obscureText: widget.ispassword
           ? showPassword

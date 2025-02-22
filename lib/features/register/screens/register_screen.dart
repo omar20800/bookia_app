@@ -38,7 +38,7 @@ class RegisterScreen extends StatelessWidget {
                     SizedBox(height: 30),
                     InputField(
                       ispassword: false,
-                      keyboardType: TextInputType.text,
+                      keyboardType: TextInputType.name,
                       hint: 'Username',
                     ),
                     SizedBox(height: 20),
