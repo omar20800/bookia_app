@@ -11,49 +11,52 @@ class WelcomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+        resizeToAvoidBottomInset: false,
         body: Container(
-      padding: const EdgeInsets.all(22),
-      width: double.infinity,
-      height: double.infinity,
-      decoration: BoxDecoration(
-        image: DecorationImage(
-          image: const AssetImage('assets/images/welcome.png'),
-          fit: BoxFit.cover,
-        ),
-      ),
-      child: Column(mainAxisAlignment: MainAxisAlignment.center, children: [
-        SizedBox(
-          height: 200,
-        ),
-        Text(
-          'Order Your Book Now!',
-          style: TextStyle(
-              fontSize: 20,
-              fontWeight: FontWeight.w400,
-              color: Colors.black,
-              fontFamily: 'DM Serif Display'),
-        ),
-        SizedBox(height: 300),
-        CustomButton(
-          text: 'Login',
-          onpressed: () {
-            Navigator.push(context,
-                MaterialPageRoute(builder: (context) => LoginScreen()));
-          },
-          bcolor: AppColours.accentColor,
-          tcolor: AppColours.primaryColor,
-        ),
-        SizedBox(height: 20),
-        CustomButton(
-            text: 'Register',
-            onpressed: () {
-              Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => RegisterScreen()));
-            },
-            bcolor: AppColours.primaryColor,
-            tcolor: AppColours.secondaryColor,
-            sidecolor: AppColours.secondaryColor),
-      ]),
-    ));
+          padding: const EdgeInsets.all(22),
+          width: double.infinity,
+          height: double.infinity,
+          decoration: BoxDecoration(
+            image: DecorationImage(
+              image: const AssetImage('assets/images/welcome.png'),
+              fit: BoxFit.cover,
+            ),
+          ),
+          child: Column(mainAxisAlignment: MainAxisAlignment.center, children: [
+            SizedBox(
+              height: 200,
+            ),
+            Text(
+              'Order Your Book Now!',
+              style: TextStyle(
+                  fontSize: 20,
+                  fontWeight: FontWeight.w400,
+                  color: Colors.black,
+                  fontFamily: 'DM Serif Display'),
+            ),
+            SizedBox(height: 300),
+            CustomButton(
+              text: 'Login',
+              onpressed: () {
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => LoginScreen()));
+              },
+              bcolor: AppColours.accentColor,
+              tcolor: AppColours.primaryColor,
+            ),
+            SizedBox(height: 20),
+            CustomButton(
+                text: 'Register',
+                onpressed: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => RegisterScreen()));
+                },
+                bcolor: AppColours.primaryColor,
+                tcolor: AppColours.secondaryColor,
+                sidecolor: AppColours.secondaryColor),
+          ]),
+        ));
   }
 }
