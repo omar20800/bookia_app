@@ -1,6 +1,6 @@
 // ignore_for_file: prefer_const_literals_to_create_immutables, prefer_const_constructors
 
-import 'package:bookia_app/features/widgets/social_button.dart';
+import 'package:bookia_app/core/widgets/social_button.dart';
 import 'package:flutter/material.dart';
 
 class LoginWith extends StatelessWidget {

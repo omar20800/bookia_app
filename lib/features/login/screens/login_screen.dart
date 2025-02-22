@@ -1,25 +1,19 @@
 // ignore_for_file: prefer_const_literals_to_create_immutables, prefer_const_constructors
 
 import 'package:bookia_app/core/appcolour.dart';
-import 'package:bookia_app/features/widgets/back_button.dart';
-import 'package:bookia_app/features/widgets/custom_button.dart';
+import 'package:bookia_app/core/widgets/back_button.dart';
+import 'package:bookia_app/core/widgets/custom_button.dart';
 import 'package:bookia_app/features/forgot%20password/screens/forgot_password.dart';
-import 'package:bookia_app/features/widgets/input_field.dart';
-import 'package:bookia_app/features/widgets/login_with.dart';
-import 'package:bookia_app/features/login/widgets/password_field.dart';
-import 'package:bookia_app/features/widgets/register_login.dart';
+import 'package:bookia_app/core/widgets/input_field.dart';
+import 'package:bookia_app/core/widgets/login_with.dart';
+import 'package:bookia_app/core/widgets/register_login.dart';
 import 'package:bookia_app/features/register/screens/register_screen.dart';
-import 'package:bookia_app/features/widgets/welcome_text.dart';
+import 'package:bookia_app/core/widgets/welcome_text.dart';
 import 'package:flutter/material.dart';
 
-class LoginScreen extends StatefulWidget {
-  LoginScreen({super.key});
+class LoginScreen extends StatelessWidget {
+  const LoginScreen({super.key});
 
-  @override
-  State<LoginScreen> createState() => _LoginScreenState();
-}
-
-class _LoginScreenState extends State<LoginScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -42,11 +36,16 @@ class _LoginScreenState extends State<LoginScreen> {
                     ),
                     SizedBox(height: 30),
                     InputField(
+                      ispassword: false,
                       keyboardType: TextInputType.emailAddress,
                       hint: 'Enter your email',
                     ),
                     SizedBox(height: 20),
-                    PasswordField(),
+                    InputField(
+                      ispassword: true,
+                      keyboardType: TextInputType.visiblePassword,
+                      hint: 'Enter your password',
+                    ),
                     SizedBox(height: 20),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.end,

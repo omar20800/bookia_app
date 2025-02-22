@@ -1,0 +1,2 @@
+D:/flutter diploma/bookia_app/android/app/.cxx/Debug/354j3d67/x86/CMakeFiles/edit_cache.dir
+D:/flutter diploma/bookia_app/android/app/.cxx/Debug/354j3d67/x86/CMakeFiles/rebuild_cache.dir

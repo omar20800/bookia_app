@@ -1,14 +1,13 @@
 // ignore_for_file: prefer_const_constructors
 
 import 'package:bookia_app/core/appcolour.dart';
-import 'package:bookia_app/features/widgets/back_button.dart';
-import 'package:bookia_app/features/widgets/custom_button.dart';
-import 'package:bookia_app/features/widgets/input_field.dart';
+import 'package:bookia_app/core/widgets/back_button.dart';
+import 'package:bookia_app/core/widgets/custom_button.dart';
+import 'package:bookia_app/core/widgets/input_field.dart';
 import 'package:bookia_app/features/login/screens/login_screen.dart';
-import 'package:bookia_app/features/widgets/login_with.dart';
-import 'package:bookia_app/features/login/widgets/password_field.dart';
-import 'package:bookia_app/features/widgets/register_login.dart';
-import 'package:bookia_app/features/widgets/welcome_text.dart';
+import 'package:bookia_app/core/widgets/login_with.dart';
+import 'package:bookia_app/core/widgets/register_login.dart';
+import 'package:bookia_app/core/widgets/welcome_text.dart';
 import 'package:flutter/material.dart';
 
 class ForgotPassword extends StatelessWidget {
@@ -44,6 +43,7 @@ class ForgotPassword extends StatelessWidget {
                     ),
                     SizedBox(height: 30),
                     InputField(
+                      ispassword: false,
                       keyboardType: TextInputType.emailAddress,
                       hint: 'Enter your email',
                     ),
