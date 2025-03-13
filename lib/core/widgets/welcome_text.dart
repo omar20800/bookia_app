@@ -6,12 +6,14 @@ class WelcomeText extends StatelessWidget {
   const WelcomeText({
     super.key,
     required this.text,
+    this.width,
   });
   final String text;
+  final double? width;
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      width: 280,
+      width: width ?? 280,
       child: Text(text,
           style: TextStyle(
             fontFamily: 'DM Serif Display',

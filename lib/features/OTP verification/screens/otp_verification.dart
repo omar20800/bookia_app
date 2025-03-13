@@ -1,20 +1,19 @@
 // ignore_for_file: prefer_const_constructors
 
 import 'package:bookia_app/core/colors/appcolour.dart';
+import 'package:bookia_app/core/validation/validation.dart';
 import 'package:bookia_app/core/widgets/back_button.dart';
 import 'package:bookia_app/core/widgets/custom_button.dart';
-import 'package:bookia_app/core/widgets/input_field.dart';
-import 'package:bookia_app/features/OTP%20verification/screens/otp_verification.dart';
-import 'package:bookia_app/features/login/screens/login_screen.dart';
-import 'package:bookia_app/core/widgets/login_with.dart';
 import 'package:bookia_app/core/widgets/register_login.dart';
 import 'package:bookia_app/core/widgets/welcome_text.dart';
+import 'package:bookia_app/features/login/screens/login_screen.dart';
+import 'package:bookia_app/features/reset%20password/screens/reset_password.dart';
 import 'package:flutter/material.dart';
+import 'package:pinput/pinput.dart';
 
-class ForgotPassword extends StatelessWidget {
-  ForgotPassword({super.key});
+class OtpVerification extends StatelessWidget {
+  OtpVerification({super.key});
   final _formKey = GlobalKey<FormState>();
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -35,10 +34,10 @@ class ForgotPassword extends StatelessWidget {
                       }),
                       SizedBox(height: 20),
                       WelcomeText(
-                        text: 'Forgot Password?',
+                        text: 'OTP Verification',
                       ),
                       Text(
-                        'Don\'t worry! It occurs. Please enter the email address linked with your account.',
+                        'Enter the verification code we just sent on your email address.',
                         style: TextStyle(
                             fontFamily: 'DM Serif Display',
                             fontSize: 16,
@@ -46,26 +45,45 @@ class ForgotPassword extends StatelessWidget {
                             color: Color(0xff8391A1)),
                       ),
                       SizedBox(height: 30),
-                      InputField(
-                        ispassword: false,
-                        keyboardType: TextInputType.emailAddress,
-                        hint: 'Enter your email',
-                      ),
+                      Pinput(
+                          validator: (value) => otpValid(value),
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                          length: 4,
+                          defaultPinTheme: PinTheme(
+                            width: 70,
+                            height: 60,
+                            textStyle: TextStyle(
+                                fontSize: 20,
+                                fontFamily: 'Urbanist',
+                                fontWeight: FontWeight.w700,
+                                color: Color(0xff2F2F2F)),
+                            decoration: BoxDecoration(
+                              color: Colors.white,
+                              borderRadius: BorderRadius.circular(8),
+                              border: Border.all(
+                                color: AppColours.accentColor,
+                                width: 1.2,
+                              ),
+                            ),
+                          )),
                       SizedBox(
                         height: 30,
                       ),
                       CustomButton(
-                          text: 'Send Code',
-                          onpressed: () {
+                          text: 'Verify',
+                          onpressed: () async {
                             if (_formKey.currentState!.validate()) {
                               ScaffoldMessenger.of(context).showSnackBar(
                                   const SnackBar(
+                                      duration: Duration(seconds: 1),
                                       backgroundColor: Colors.green,
-                                      content: Text('Sending Code')));
-                              Navigator.push(
+                                      content: Text('Verifying Code')));
+                              await Future.delayed(Duration(seconds: 2));
+                              if (!context.mounted) return;
+                              Navigator.pushReplacement(
                                   context,
                                   MaterialPageRoute(
-                                      builder: (context) => OtpVerification()));
+                                      builder: (context) => ResetPassword()));
                             }
                           },
                           bcolor: AppColours.accentColor,
@@ -73,13 +91,14 @@ class ForgotPassword extends StatelessWidget {
                       Expanded(child: SizedBox()),
                       RegisterLogin(
                         onPressed: () {
-                          Navigator.pushReplacement(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => LoginScreen()));
+                          ScaffoldMessenger.of(context).showSnackBar(
+                              const SnackBar(
+                                  backgroundColor: Colors.green,
+                                  duration: Duration(seconds: 1),
+                                  content: Text('Resending Code')));
                         },
-                        text: 'Remember Password?',
-                        textButton: 'Login',
+                        text: 'Didn\’t received code? ',
+                        textButton: 'Resend',
                       ),
                     ]),
               ),

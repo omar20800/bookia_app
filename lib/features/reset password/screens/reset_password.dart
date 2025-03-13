@@ -4,17 +4,15 @@ import 'package:bookia_app/core/colors/appcolour.dart';
 import 'package:bookia_app/core/widgets/back_button.dart';
 import 'package:bookia_app/core/widgets/custom_button.dart';
 import 'package:bookia_app/core/widgets/input_field.dart';
-import 'package:bookia_app/features/OTP%20verification/screens/otp_verification.dart';
-import 'package:bookia_app/features/login/screens/login_screen.dart';
-import 'package:bookia_app/core/widgets/login_with.dart';
 import 'package:bookia_app/core/widgets/register_login.dart';
 import 'package:bookia_app/core/widgets/welcome_text.dart';
+import 'package:bookia_app/features/login/screens/login_screen.dart';
+import 'package:bookia_app/features/reset%20password/screens/password_changed.dart';
 import 'package:flutter/material.dart';
 
-class ForgotPassword extends StatelessWidget {
-  ForgotPassword({super.key});
+class ResetPassword extends StatelessWidget {
+  ResetPassword({super.key});
   final _formKey = GlobalKey<FormState>();
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -35,10 +33,11 @@ class ForgotPassword extends StatelessWidget {
                       }),
                       SizedBox(height: 20),
                       WelcomeText(
-                        text: 'Forgot Password?',
+                        width: double.infinity,
+                        text: 'Create new password',
                       ),
                       Text(
-                        'Don\'t worry! It occurs. Please enter the email address linked with your account.',
+                        'Your new password must be unique from those previously used.',
                         style: TextStyle(
                             fontFamily: 'DM Serif Display',
                             fontSize: 16,
@@ -47,40 +46,31 @@ class ForgotPassword extends StatelessWidget {
                       ),
                       SizedBox(height: 30),
                       InputField(
-                        ispassword: false,
-                        keyboardType: TextInputType.emailAddress,
-                        hint: 'Enter your email',
+                        ispassword: true,
+                        keyboardType: TextInputType.visiblePassword,
+                        hint: 'New Password',
+                      ),
+                      SizedBox(height: 20),
+                      InputField(
+                        ispassword: true,
+                        keyboardType: TextInputType.visiblePassword,
+                        hint: 'Confirm Password',
                       ),
                       SizedBox(
                         height: 30,
                       ),
                       CustomButton(
-                          text: 'Send Code',
-                          onpressed: () {
+                          text: 'Reset Password',
+                          onpressed: () async {
                             if (_formKey.currentState!.validate()) {
-                              ScaffoldMessenger.of(context).showSnackBar(
-                                  const SnackBar(
-                                      backgroundColor: Colors.green,
-                                      content: Text('Sending Code')));
-                              Navigator.push(
+                              Navigator.pushReplacement(
                                   context,
                                   MaterialPageRoute(
-                                      builder: (context) => OtpVerification()));
+                                      builder: (context) => PasswordChanged()));
                             }
                           },
                           bcolor: AppColours.accentColor,
                           tcolor: AppColours.primaryColor),
-                      Expanded(child: SizedBox()),
-                      RegisterLogin(
-                        onPressed: () {
-                          Navigator.pushReplacement(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => LoginScreen()));
-                        },
-                        text: 'Remember Password?',
-                        textButton: 'Login',
-                      ),
                     ]),
               ),
             )

@@ -1,6 +1,6 @@
 // ignore_for_file: prefer_const_constructors
 
-import 'package:bookia_app/core/appcolour.dart';
+import 'package:bookia_app/core/colors/appcolour.dart';
 import 'package:bookia_app/core/widgets/back_button.dart';
 import 'package:bookia_app/core/widgets/custom_button.dart';
 import 'package:bookia_app/core/widgets/input_field.dart';

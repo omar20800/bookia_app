@@ -39,3 +39,15 @@ String? usernameValid(String? value) {
     return null;
   }
 }
+
+String? otpValid(String? value) {
+  if (value == null || value.isEmpty) {
+    return "This field is can't be empty";
+  } else if (value.contains(RegExp(r'[a-zA-Z]'))) {
+    return "OTP must contain only numbers";
+  } else if (value.length > 4) {
+    return "OTP must be at most 4 numbers";
+  } else {
+    return null;
+  }
+}

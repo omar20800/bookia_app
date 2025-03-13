@@ -1,6 +1,6 @@
 // ignore_for_file: prefer_const_constructors
 
-import 'package:bookia_app/core/appcolour.dart';
+import 'package:bookia_app/core/colors/appcolour.dart';
 import 'package:flutter/material.dart';
 
 class RegisterLogin extends StatelessWidget {
